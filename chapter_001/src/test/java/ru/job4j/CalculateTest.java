@@ -8,23 +8,23 @@ import static org.junit.Assert.assertThat;
 
 
 /**
-* Test.
-*
-* @author Pavel Kortchagin	
-* @version 1.0
-* @since 13.12.2017
-*/
+ * Test.
+ *
+ * @author Pavel Kortchagin
+ * @version 1.0
+ * @since 13.12.2017
+ */
 public class CalculateTest {
-/**
-* Test echo.
-*/ 
-@Test
-public void whenTakeNameThenTreeEchoPlusName() {
-    String input = "Pablo";
-    String expect = "Echo, echo, echo : Pablo";
-    Calculate calc = new Calculate();
-    String result = calc.echo(input);
-    assertThat(result, is(expect));
-}
- 
+    /**
+     * Test echo.
+     */
+    @Test
+    public void whenTakeNameThenTreeEchoPlusName() {
+        String input = "Pablo";
+        String expect = "Echo, echo, echo : Pablo";
+        Calculate calc = new Calculate();
+        String result = calc.echo(input);
+        assertThat(result, is(expect));
+    }
+
 }
