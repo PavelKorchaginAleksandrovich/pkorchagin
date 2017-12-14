@@ -10,12 +10,22 @@ package ru.job4j.max;
 public class Max {
 
     /**
-     * вычисляет максимальное число
+     * вычисляет максимальное число.
      * @param first, second  числа пользователя.
-     * @return Ответ.
+     * @return максимальное число.
      */
 
     public int max(int first, int second) {
         return (first > second ? first : second);
+    }
+
+    /**
+     * вычисляет максимальное число.
+     * @param first, second, third числа пользователя.
+     * @return максимальное число.
+     */
+    public int maxThree(int first, int second, int third) {
+        int maxOfTwo = max(first, second);
+        return max(maxOfTwo, third);
     }
 }

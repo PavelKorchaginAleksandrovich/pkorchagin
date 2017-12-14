@@ -12,10 +12,17 @@ import static org.junit.Assert.assertThat;
  */
 
 public class MaxTest {
+    Max max = new Max();
     @Test
     public void whenTwoNumbersThenMaxOfTwoNumbers() {
-        Max max = new Max();
         int result = max.max(45, 46);
         assertThat(result, is(46));
     }
+
+    @Test
+    public void whenThreeNumbersThenMaxOfThreeNumbers() {
+        int result = max.maxThree(75, 46, 60);
+        assertThat(result, is(75));
+    }
+
 }
