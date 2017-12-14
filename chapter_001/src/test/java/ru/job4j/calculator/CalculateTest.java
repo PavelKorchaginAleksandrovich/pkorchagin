@@ -29,18 +29,21 @@ public class CalculateTest {
         Double result = calc.getResult();
         assertThat(result, is(expect));
     }
+    @Test
     public void whenSubtractThenOneMinusTwo() {
         double expect = 24;
         calc.subtract(first, second);
         Double result = calc.getResult();
         assertThat(result, is(expect));
     }
+    @Test
     public void whenMultipleThenOneMultiplyTwo() {
-        double expect = 180;
+        double expect = 10;
         calc.multiple(first, second);
         Double result = calc.getResult();
         assertThat(result, is(expect));
     }
+    @Test
     public void whenDivThenOneDivideTwo() {
         double expect = 5;
         calc.div(first, second);
