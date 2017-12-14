@@ -38,7 +38,7 @@ public class CalculateTest {
     }
     @Test
     public void whenMultipleThenOneMultiplyTwo() {
-        double expect = 10;
+        double expect = 180;
         calc.multiple(first, second);
         Double result = calc.getResult();
         assertThat(result, is(expect));
