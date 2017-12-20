@@ -22,10 +22,10 @@ public class Factorial {
             for (int count = 1; count <= n; count++) {
                 factorial = count * factorial;
             }
-            return factorial;
-        } else {
-            return 0;
+          } else {
+            factorial = 0;
         }
+        return factorial;
     }
 }
 
