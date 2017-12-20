@@ -40,9 +40,7 @@ public class Triangle {
      * @return является ли данная фигура треугольником.
      */
     private boolean exist(double ab, double ac, double bc) {
-        boolean thisIsTriangle;
-        thisIsTriangle = ab < ac + bc && ac < ab + bc && bc < ab + ac;
-        return thisIsTriangle;
+        return ab < ac + bc && ac < ab + bc && bc < ab + ac;
     }
 
 }
