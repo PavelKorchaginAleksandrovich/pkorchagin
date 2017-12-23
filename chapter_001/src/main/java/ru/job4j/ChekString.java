@@ -23,13 +23,13 @@ public class ChekString {
         boolean result = false;
         while (count <= lenght && !result) {
             if (originArray[count] == subArray[0]) {
-                for (int countInner = 1; countInner <= subArray.length - 1; countInner++) {
-                    if (originArray[count + countInner] != subArray[countInner]) {
-                        break;
-                    }
-                    result = countInner == subArray.length - 1 ?  true : false;
+                int countInner = 1;
+                while (countInner < subArray.length && originArray[count + countInner] == subArray[countInner]) {
+                    countInner++;
                 }
+                result = countInner == subArray.length ? true : false;
             }
+
             count++;
         }
         return result;
