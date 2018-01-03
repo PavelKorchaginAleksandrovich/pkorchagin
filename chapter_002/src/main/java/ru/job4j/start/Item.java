@@ -14,8 +14,7 @@ public class Item {
         this.name = name;
     }
 
-    public Item(String id, String description, long create, String name) {
-        this.id = id;
+    public Item(String description, long create, String name) {
         this.description = description;
         this.create = create;
         this.name = name;
