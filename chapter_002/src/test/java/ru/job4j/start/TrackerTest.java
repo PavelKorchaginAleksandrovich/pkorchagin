@@ -1,8 +1,8 @@
 package ru.job4j.start;
 
 import org.junit.Test;
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import ru.job4j.models.Item;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertArrayEquals;

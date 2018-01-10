@@ -1,4 +1,4 @@
-package ru.job4j.start;
+package ru.job4j.models;
 
 public class Item {
     private String id;
@@ -20,6 +20,10 @@ public class Item {
         this.name = name;
     }
 
+    public Item(String name, String description) {
+        this.description = description;
+        this.name = name;
+    }
     public String getId() {
         return this.id;
     }

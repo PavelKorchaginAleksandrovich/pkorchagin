@@ -1,13 +1,16 @@
 package ru.job4j.start;
 
+import ru.job4j.models.Item;
+
 import java.util.*;
 
 
 public class Tracker {
+    private static final Random RN = new Random();
     private Item[] items = new Item[100];
 
     private int position = 0;
-    private static final Random RN = new Random();
+
     private String generateId() {
         return String.valueOf(System.currentTimeMillis() + RN.nextInt());
     }
@@ -24,10 +27,13 @@ public class Tracker {
         }
     }
     public void delete(String id) {
+
         int index = findByIdIndex(id);
-        System.arraycopy(items, index + 1, items, index, this.position - index - 1);
-        this.position--;
-        this.items[position] = null;
+        if (index != -1) {
+            System.arraycopy(items, index + 1, items, index, this.position - index - 1);
+            this.position--;
+            this.items[position] = null;
+        }
     }
 
     public Item[] findAll() {
@@ -41,19 +47,15 @@ public class Tracker {
     public Item[] findByName(String key) {
         //посчитаем сколько совпадений и найдем индексы совпадений
         int count = 0;
-        int[] indexes = new int[this.items.length];
-        for (int i = 0; i != this.position; i++) {
-            if (items[i] != null && items[i].getName().equals(key)) {
-                indexes[count] = i;
+        Item[] items = new Item[this.items.length];
+        for (Item item : this.items) {
+            if (item != null && item.getName().equals(key)) {
+                items[count] = item;
                 count++;
             }
         }
-        //присвоим результаты совпадений
-        Item[] result = new Item[count];
-        for (int index = 0; index != count; index++) {
-            result[index] = items[indexes[index]];
-        }
-        return result;
+
+        return Arrays.copyOf(items, count);
     }
 
     public Item findById(String id) {
