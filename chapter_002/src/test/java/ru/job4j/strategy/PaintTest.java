@@ -12,6 +12,16 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertArrayEquals;
 
 public class PaintTest {
+    private final PrintStream stdout = System.out;
+    private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+    public void loadOutput() {
+        System.setOut(new PrintStream(this.out));
+    }
+
+    public void backOutput() {
+        System.setOut(this.stdout);
+    }
+
     @Test
     public void whenDrawSquare() {
         String squareString = new StringBuilder().append("+++++\n").
@@ -19,11 +29,10 @@ public class PaintTest {
                                                   append("+   +\n").
                                                   append("+++++").
                                                   append(System.lineSeparator()).toString();
-        PrintStream stdout = System.out;
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
+        this.loadOutput();
         new Paint().draw(new Square());
-        assertThat(new String(out.toByteArray()), is(squareString));
+        assertThat(new String(this.out.toByteArray()), is(squareString));
+        this.backOutput();
     }
 
     @Test
@@ -33,11 +42,10 @@ public class PaintTest {
                                                   append(" +++++ \n").
                                                   append("+++++++").
                                                   append(System.lineSeparator()).toString();
-        PrintStream stdout = System.out;
-        ByteArrayOutputStream out = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(out));
+        this.loadOutput();
         new Paint().draw(new Triangle());
-        assertThat(new String(out.toByteArray()), is(squareString));
+        assertThat(new String(this.out.toByteArray()), is(squareString));
+        this.backOutput();
     }
 
     @Test
