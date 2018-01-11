@@ -61,7 +61,7 @@ public class StartUI {
         Item[] items = this.tracker.findByName(name);
         System.out.println("Найдено заявок " + items.length);
         for (Item item : items) {
-            System.out.println("Имя: " + item.getName() + " ID: " + item.getId())0;
+            System.out.println("Имя: " + item.getName() + " ID: " + item.getId());
         }
     }
 
@@ -74,7 +74,7 @@ public class StartUI {
             String desc = this.input.ask("Введите новое описание заявки :");
             item.setName(name);
             item.setDescription(desc);
-        }else {
+        } else {
             System.out.println("Заявка не найдена, выберите другой ID");
         }
     }
@@ -96,7 +96,7 @@ public class StartUI {
         Item item = this.tracker.findById(id);
         if (item == null) {
             System.out.println("Заявка не найдена");
-        }else {
+        } else {
             System.out.println(item.getName());
         }
     }
@@ -114,13 +114,13 @@ public class StartUI {
     }
 
     private void showMenu() {
-        System.out.println("0. Add new Item\n" +
-                "1. Show all items\n" +
-                "2. Edit item\n" +
-                "3. Delete item\n" +
-                "4. Find item by Id\n" +
-                "5. Find items by name\n" +
-                "6. Exit Program\n");
+        System.out.println("0. Add new Item\n"
+                + "1. Show all items\n"
+                + "2. Edit item\n"
+                + "3. Delete item\n"
+                + "4. Find item by Id\n"
+                + "5. Find items by name\n"
+                + "6. Exit Program\n");
     }
 
     /**
