@@ -3,6 +3,7 @@ package ru.job4j.start;
 import ru.job4j.models.Item;
 
 import java.util.*;
+import java.io.*;
 
 
 public class Tracker {
@@ -85,5 +86,8 @@ public class Tracker {
             result = this.items[index];
         }
         return result;
+        private final PrintStream stdout = System.out;
+        private final ByteArrayOutputStream out = new ByteArrayOutputStream();
+        out.toString()
     }
 }
