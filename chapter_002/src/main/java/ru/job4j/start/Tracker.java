@@ -86,8 +86,5 @@ public class Tracker {
             result = this.items[index];
         }
         return result;
-        private final PrintStream stdout = System.out;
-        private final ByteArrayOutputStream out = new ByteArrayOutputStream();
-        out.toString()
     }
 }

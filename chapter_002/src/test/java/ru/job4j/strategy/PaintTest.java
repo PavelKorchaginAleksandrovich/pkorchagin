@@ -17,7 +17,6 @@ public class PaintTest {
     public void loadOutput() {
         System.setOut(new PrintStream(this.out));
     }
-
     public void backOutput() {
         System.setOut(this.stdout);
     }
