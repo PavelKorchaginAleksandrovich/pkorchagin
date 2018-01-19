@@ -33,27 +33,35 @@ public class StartUI {
      * Основой цикл программы.
      */
     public void init() {
-        boolean exit = false;
-        while (!exit) {
-            this.showMenu();
-            String answer = this.input.ask("Введите пункт меню : ");
-            if (ADD.equals(answer)) {
-               this.createItem();
-           } else if (SHOWALL.equals(answer)) {
-                this.showAll();
-            } else if (EDIT.equals(answer)) {
-                this.edit();
-            } else if (DELETE.equals(answer)) {
-                this.delete();
-            } else if (FINDBYID.equals(answer)) {
-                this.findByID();
-            } else if (FINDBYNAME.equals(answer)) {
-                this.findByName();
-
-            } else if (EXIT.equals(answer)) {
-                exit = true;
-            }
-        }
+//        boolean exit = false;
+//        while (!exit) {
+//            this.showMenu();
+//            String answer = this.input.ask("Введите пункт меню : ");
+//            if (ADD.equals(answer)) {
+//               this.createItem();
+//           } else if (SHOWALL.equals(answer)) {
+//                this.showAll();
+//            } else if (EDIT.equals(answer)) {
+//                this.edit();
+//            } else if (DELETE.equals(answer)) {
+//                this.delete();
+//            } else if (FINDBYID.equals(answer)) {
+//                this.findByID();
+//            } else if (FINDBYNAME.equals(answer)) {
+//                this.findByName();
+//
+//            } else if (EXIT.equals(answer)) {
+//                exit = true;
+//            }
+//        }
+        int key;
+        MenuTracker menu = new MenuTracker(this.tracker, this.input);
+        menu.fillActions();
+         do {
+            menu.show();
+            key = Integer.valueOf(input.ask("Select"));
+            menu.select(key);
+        } while (key != 6);
     }
 
     private void findByName() {

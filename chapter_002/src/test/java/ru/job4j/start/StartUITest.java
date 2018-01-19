@@ -12,13 +12,13 @@ import static org.junit.Assert.assertArrayEquals;
 public class StartUITest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
-    private final String menu = "0. Add new Item\n"
-            + "1. Show all items\n"
-            + "2. Edit item\n"
-            + "3. Delete item\n"
-            + "4. Find item by Id\n"
-            + "5. Find items by name\n"
-            + "6. Exit Program\n";
+    private final String menu = "0. Add new Item\r\n"
+            + "1. Show all items\r\n"
+            + "2. Edit item\r\n"
+            + "3. Delete item\r\n"
+            + "4. Find item by Id\r\n"
+            + "5. Find items by name\r\n"
+            + "6. Exit";
        public void loadOutput() {
         System.setOut(new PrintStream(this.out));
     }
