@@ -48,8 +48,8 @@ public class MenuTracker {
     public void fillActions() {
         this.actions[0] = new AddItem();
         this.actions[1] = new ShowAllItems();
-        this.actions[2] = new EditItem();
-        this.actions[3] = new DeleteItem();
+        this.actions[2] = this.new EditItem();
+        this.actions[3] = this.new DeleteItem();
         this.actions[4] = new FindItemById();
         this.actions[5] = new FindItemsByName();
         this.actions[6] = new Exit();
@@ -79,7 +79,7 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             System.out.println("Список всех заявок:");
             for (Item item : tracker.findAll()) {
-                System.out.println("Имя: " + item.getName() + " ID: " + item.getId());
+                System.out.println(String.format("Имя: %s ID: %s", item.getName(), item.getId()));
             }
         }
     }
@@ -99,7 +99,7 @@ public class MenuTracker {
             String id = input.ask("Введите id редактируемой заявки :");
             Item item = tracker.findById(id);
             if (item != null) {
-                System.out.println("Заявка " + item.getName() + " будет изменена");
+                System.out.println(String.format("Заявка %s будет изменена", item.getName()));
                 String name = input.ask("Введите новое имя заявки :");
                 String desc = input.ask("Введите новое описание заявки :");
                 item.setName(name);
@@ -164,9 +164,9 @@ public class MenuTracker {
         public void execute(Input input, Tracker tracker) {
             String name = input.ask("Введите имя заявки :");
             Item[] items = tracker.findByName(name);
-            System.out.println("Найдено заявок " + items.length);
+            System.out.println(String.format("Найдено заявок %s", items.length));
             for (Item item : items) {
-                System.out.println("Имя: " + item.getName() + " ID: " + item.getId());
+                System.out.println(String.format("Имя: %s ID: %s", item.getName(), item.getId()));
             }
         }
     }
