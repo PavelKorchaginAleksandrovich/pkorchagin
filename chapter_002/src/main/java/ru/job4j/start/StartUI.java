@@ -19,11 +19,18 @@ public class StartUI {
      */
     private final Tracker tracker;
 
+    public void setExit(boolean exit) {
+        this.exit = exit;
+    }
+
+    private boolean exit;
     /**
      * Конструтор инициализирующий поля.
      * @param input ввод данных.
      * @param tracker хранилище заявок.
      */
+
+
     public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
@@ -54,14 +61,14 @@ public class StartUI {
 //                exit = true;
 //            }
 //        }
-        int key;
+
         MenuTracker menu = new MenuTracker(this.tracker, this.input);
-        menu.fillActions();
+        menu.fillActions(this);
          do {
             menu.show();
-            key = Integer.valueOf(input.ask("Select"));
+            int key = Integer.valueOf(input.ask("Select"));
             menu.select(key);
-        } while (key != 6);
+        } while (! this.exit);
     }
 
     private void findByName() {

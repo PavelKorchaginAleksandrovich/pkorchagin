@@ -22,6 +22,10 @@ class AddItem implements  UserAction {
     }
 }
 class Exit implements UserAction {
+    StartUI ui;
+    public Exit(StartUI ui) {
+        this.ui = ui;
+    }
     @Override
     public int key() {
         return 6;
@@ -33,7 +37,9 @@ class Exit implements UserAction {
     }
 
     @Override
-    public void execute(Input input, Tracker tracker) { }
+    public void execute(Input input, Tracker tracker) {
+        ui.setExit(true);
+    }
 }
 
 public class MenuTracker {
@@ -45,14 +51,14 @@ public class MenuTracker {
         this.tracker = tracker;
         this.input = input;
     }
-    public void fillActions() {
+    public void fillActions(StartUI ui) {
         this.actions[0] = new AddItem();
         this.actions[1] = new ShowAllItems();
         this.actions[2] = this.new EditItem();
         this.actions[3] = this.new DeleteItem();
         this.actions[4] = new FindItemById();
         this.actions[5] = new FindItemsByName();
-        this.actions[6] = new Exit();
+        this.actions[6] = new Exit(ui);
     }
     public void show() {
         for (UserAction action : actions) {
