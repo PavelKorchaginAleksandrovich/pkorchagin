@@ -20,8 +20,8 @@ public class StartUI {
 
     private int[] ranges = {0, 1, 2, 3, 4, 5, 6};
 
-    public void setExit(boolean exit) {
-        this.exit = exit;
+    public void exit() {
+        this.exit = true;
     }
 
     private boolean exit;
