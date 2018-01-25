@@ -26,5 +26,5 @@ public class Counter {
         }
         return result;
     }
-
 }
+

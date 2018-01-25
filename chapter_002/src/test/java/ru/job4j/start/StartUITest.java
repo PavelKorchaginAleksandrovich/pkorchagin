@@ -1,7 +1,8 @@
 package ru.job4j.start;
 import org.junit.Test;
 import ru.job4j.models.Item;
-
+import org.junit.After;
+import org.junit.Before;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
@@ -19,7 +20,7 @@ public class StartUITest {
             + "4. Find item by Id\r\n"
             + "5. Find items by name\r\n"
             + "6. Exit";
-       public void loadOutput() {
+    public void loadOutput() {
         System.setOut(new PrintStream(this.out));
     }
 
@@ -27,10 +28,12 @@ public class StartUITest {
         System.setOut(this.stdout);
     }
 
+
+
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"0", "new item", "desc", "6"});
+        ValidateInput input = new ValidateInput(new StubInput(new String[]{"0", "new item", "desc", "6"}));
         new StartUI(input, tracker).init();
         assertThat(tracker.getByIndex(0).getName(), is("new item"));
     }
@@ -38,7 +41,7 @@ public class StartUITest {
     public void whenEditThenTrackerHasEditValue() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("name", "decs"));
-        Input input = new StubInput(new String[]{"2", item.getId(), "edit name", "desc", "6"});
+        ValidateInput input = new ValidateInput(new StubInput(new String[]{"2", item.getId(), "edit name", "desc", "6"}));
         new StartUI(input, tracker).init();
         assertThat(tracker.findById(item.getId()).getName(), is("edit name"));
     }
@@ -47,7 +50,7 @@ public class StartUITest {
     public void whenDeleteItemThenTrackerNotHasItem() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("name", "decs"));
-        Input input = new StubInput(new String[]{"3", item.getId(), "6"});
+        ValidateInput input = new ValidateInput(new StubInput(new String[]{"3", item.getId(), "6"}));
         new StartUI(input, tracker).init();
         assertThat(tracker.findAll().length, is(0));
     }
@@ -60,7 +63,7 @@ public class StartUITest {
                 append(this.menu).append(System.lineSeparator()).
                 append(item.getName()).append(System.lineSeparator()).
                 append(this.menu).append(System.lineSeparator()).toString();
-        Input input = new StubInput(new String[]{"4", item.getId(), "6"});
+        ValidateInput input = new ValidateInput(new StubInput(new String[]{"4", item.getId(), "6"}));
         StartUI start = new StartUI(input, tracker);
         this.loadOutput();
         start.init();
@@ -77,7 +80,7 @@ public class StartUITest {
                 append("Имя: ").append(item.getName()).append(" ID: ").append(item.getId()).
                 append(System.lineSeparator()).
                 append(this.menu).append(System.lineSeparator()).toString();
-        Input input = new StubInput(new String[]{"5", "test name", "6"});
+        ValidateInput input = new ValidateInput(new StubInput(new String[]{"5", "test name", "6"}));
         StartUI start = new StartUI(input, tracker);
         this.loadOutput();
         start.init();
@@ -90,10 +93,10 @@ public class StartUITest {
         Item item = tracker.add(new Item("test name", "decs"));
         String expected = new StringBuilder()
                 .append(this.menu).append(System.lineSeparator()).
-                append("Список всех заявок:").append(System.lineSeparator()).
-                append("Имя: ").append("test name").append(" ID: ").append(item.getId()).append(System.lineSeparator()).
-                append(this.menu).append(System.lineSeparator()).toString();
-        Input input = new StubInput(new String[]{"1", "6"});
+                        append("Список всех заявок:").append(System.lineSeparator()).
+                        append("Имя: ").append("test name").append(" ID: ").append(item.getId()).append(System.lineSeparator()).
+                        append(this.menu).append(System.lineSeparator()).toString();
+        ValidateInput input = new ValidateInput(new StubInput(new String[]{"1", "6"}));
         StartUI start = new StartUI(input, tracker);
         this.loadOutput();
         start.init();

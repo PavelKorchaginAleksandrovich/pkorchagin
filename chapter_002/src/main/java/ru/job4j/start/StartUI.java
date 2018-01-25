@@ -13,6 +13,7 @@ public class StartUI {
      * Получение данных от пользователя.
      */
     private final Input input;
+    private final Tracker tracker;
 
     /**
      * Хранилище заявок.
@@ -22,17 +23,20 @@ public class StartUI {
 
     public void exit() {
         this.exit = true;
+
     }
 
     private boolean exit;
+
     /**
      * Конструтор инициализирующий поля.
+     *
      * @param input ввод данных.
-
      */
 
 
-    public StartUI(Input input) {
+    public StartUI(Input input, Tracker tracker) {
+        this.tracker = tracker;
         this.input = input;
     }
 
@@ -62,10 +66,10 @@ public class StartUI {
 //            }
 //        }
 
-        Tracker tracker = new Tracker();
-        MenuTracker menu = new MenuTracker(tracker, this.input);
+
+        MenuTracker menu = new MenuTracker(this.tracker, this.input);
         menu.fillActions(this);
-         do {
+        do {
             menu.show();
             menu.select(input.ask("Выберите пункт:", this.ranges));
         } while (!this.exit);
@@ -140,10 +144,15 @@ public class StartUI {
 
     /**
      * Запускт программы.
+     *
      * @param args
      */
     public static void main(String[] args) {
-        Input input = new ValidateInput();
-        new StartUI(input).init();
+        new StartUI(
+                new ValidateInput(
+                        new ConsoleInput()
+                ),
+                new Tracker()
+        ).init();
     }
 }
