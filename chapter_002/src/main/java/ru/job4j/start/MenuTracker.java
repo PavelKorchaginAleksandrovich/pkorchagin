@@ -38,7 +38,7 @@ class Exit implements UserAction {
 
     @Override
     public void execute(Input input, Tracker tracker) {
-        ui.setExit(true);
+        ui.exit();
     }
 }
 
