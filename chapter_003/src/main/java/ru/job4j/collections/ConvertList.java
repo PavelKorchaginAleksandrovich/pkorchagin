@@ -5,7 +5,8 @@ import java.util.*;
  *@author Pavel Korchagin.
  *@since 01.02.2018.
  *@version 1.0.
- */ class ConvertList {
+ */
+public class ConvertList {
     /**
      * Метод преобразовывает двумерный массив в одномерную коллекцию List
      * @param array - входящий двумерный массив

@@ -13,7 +13,7 @@ public class ArrayDuplicateTest {
     @Test
     public void whenThen() {
         ArrayDuplicate arrayduplicate = new ArrayDuplicate();
-        String[] string = {"Привет", "Мир", "Вода", "Порошок", "Вода", "Мир", "Мир", "Привет"};
+        String[] string = {"Привет", "Мир", "Вода", "Вода", "Порошок", "Вода", "Мир", "Мир", "Привет"};
         String[] expected = {"Привет", "Мир", "Вода", "Порошок"};
         String[] result = arrayduplicate.remove(string);
         assertArrayEquals(expected, result);

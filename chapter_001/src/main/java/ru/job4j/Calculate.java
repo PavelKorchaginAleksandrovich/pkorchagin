@@ -9,7 +9,7 @@ package ru.job4j;
 public class Calculate {
 	/**
 	 *method print Hello world.
-	 *@param args.
+	 *@param .
 	 */
 	public static void main(String[] args) {
 		System.out.print("Hello world");

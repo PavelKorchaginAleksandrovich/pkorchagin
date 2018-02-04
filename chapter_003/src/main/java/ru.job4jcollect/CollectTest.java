@@ -6,7 +6,7 @@ public class CollectTest {
 
     public long add(Collection<String> collection, int amount) {
         String[] testArray = new String[amount];
-        for(int count = 0; count != amount; count++) {
+        for (int count = 0; count != amount; count++) {
             testArray[count] = new StringBuilder().append("testString").append((int) (Math.random() * 1000000)).toString();
         }
         long timeStart = System.nanoTime();

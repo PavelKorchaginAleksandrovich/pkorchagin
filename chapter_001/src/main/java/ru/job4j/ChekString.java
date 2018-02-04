@@ -27,7 +27,7 @@ public class ChekString {
                 while (countInner < subArray.length && originArray[count + countInner] == subArray[countInner]) {
                     countInner++;
                 }
-                result = countInner == subArray.length ? true : false;
+                result = countInner == subArray.length;
             }
 
             count++;
