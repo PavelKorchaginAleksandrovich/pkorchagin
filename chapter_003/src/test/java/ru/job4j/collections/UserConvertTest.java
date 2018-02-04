@@ -17,4 +17,6 @@ public class UserConvertTest {
         HashMap<Integer, User> result = new UserConvert().process(users);
         assertThat(result.get(123), is(user));
     }
+
+
 }
