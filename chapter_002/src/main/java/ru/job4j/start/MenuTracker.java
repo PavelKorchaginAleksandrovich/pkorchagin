@@ -3,15 +3,9 @@ package ru.job4j.start;
 
 import ru.job4j.models.Item;
 
-class AddItem implements  UserAction {
-    @Override
-    public int key() {
-        return 0;
-    }
-
-    @Override
-    public String info() {
-        return String.format("%s. %s", this.key(), "Add new Item");
+class AddItem extends BaseAction {
+    public AddItem(int key, String name) {
+        super(key, name);
     }
 
     @Override
@@ -21,19 +15,12 @@ class AddItem implements  UserAction {
         tracker.add(new Item(name, desc));
     }
 }
-class Exit implements UserAction {
+class Exit extends BaseAction {
     StartUI ui;
-    public Exit(StartUI ui) {
-        this.ui = ui;
-    }
-    @Override
-    public int key() {
-        return 6;
-    }
 
-    @Override
-    public String info() {
-        return String.format("%s. %s", this.key(), "Exit");
+    public Exit(int key, String name, StartUI ui) {
+        super(key, name);
+        this.ui = ui;
     }
 
     @Override
@@ -46,19 +33,23 @@ public class MenuTracker {
     private UserAction[] actions = new UserAction[7];
     private Tracker tracker;
     private Input input;
+    int position = 0;
 
     public MenuTracker(Tracker tracker, Input input) {
         this.tracker = tracker;
         this.input = input;
     }
     public void fillActions(StartUI ui) {
-        this.actions[0] = new AddItem();
-        this.actions[1] = new ShowAllItems();
-        this.actions[2] = this.new EditItem();
-        this.actions[3] = this.new DeleteItem();
-        this.actions[4] = new FindItemById();
-        this.actions[5] = new FindItemsByName();
-        this.actions[6] = new Exit(ui);
+        this.actions[position] = new AddItem(position++, "Add new Item");
+        this.actions[position] = new ShowAllItems(position++, "Show all items");
+        this.actions[position] = this.new EditItem(position++, "Edit item");
+        this.actions[position] = this.new DeleteItem(position++, "Delete item");
+        this.actions[position] = new FindItemById(position++, "Find item by Id");
+        this.actions[position] = new FindItemsByName(position++, "Find items by name");
+        this.actions[position] = new Exit(position++, "Exit", ui);
+    }
+    public void addAction(UserAction action) {
+        this.actions[position++] = action;
     }
     public void show() {
         for (UserAction action : actions) {
@@ -70,15 +61,9 @@ public class MenuTracker {
     public void select(int key) {
         this.actions[key].execute(this.input, this.tracker);
     }
-    class ShowAllItems implements UserAction {
-        @Override
-        public int key() {
-            return 1;
-        }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Show all items");
+    class ShowAllItems extends BaseAction {
+        public ShowAllItems(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -89,15 +74,9 @@ public class MenuTracker {
             }
         }
     }
-    class EditItem implements UserAction {
-        @Override
-        public int key() {
-            return 2;
-        }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Edit item");
+    class EditItem extends BaseAction {
+        public EditItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -115,15 +94,9 @@ public class MenuTracker {
             }
         }
     }
-    class DeleteItem implements UserAction {
-        @Override
-        public int key() {
-            return 3;
-        }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Delete item");
+    class DeleteItem extends BaseAction {
+        public DeleteItem(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -132,15 +105,9 @@ public class MenuTracker {
             tracker.delete(id);
         }
     }
-    static class FindItemById implements UserAction {
-        @Override
-        public int key() {
-            return 4;
-        }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find item by Id");
+    static class FindItemById extends BaseAction {
+        public FindItemById(int key, String name) {
+            super(key, name);
         }
 
         @Override
@@ -155,15 +122,9 @@ public class MenuTracker {
         }
     }
 
-    static class FindItemsByName implements UserAction {
-        @Override
-        public int key() {
-            return 5;
-        }
-
-        @Override
-        public String info() {
-            return String.format("%s. %s", this.key(), "Find items by name");
+    static class FindItemsByName extends BaseAction {
+        public FindItemsByName(int key, String name) {
+            super(key, name);
         }
 
         @Override
