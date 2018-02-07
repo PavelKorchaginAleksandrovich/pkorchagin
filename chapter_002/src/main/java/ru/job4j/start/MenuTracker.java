@@ -3,6 +3,9 @@ package ru.job4j.start;
 
 import ru.job4j.models.Item;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class AddItem extends BaseAction {
     public AddItem(int key, String name) {
         super(key, name);
@@ -30,7 +33,7 @@ class Exit extends BaseAction {
 }
 
 public class MenuTracker {
-    private UserAction[] actions = new UserAction[7];
+    private ArrayList<UserAction> actions = new ArrayList<>();
     private Tracker tracker;
     private Input input;
     int position = 0;
@@ -40,17 +43,16 @@ public class MenuTracker {
         this.input = input;
     }
     public void fillActions(StartUI ui) {
-        this.actions[position] = new AddItem(position++, "Add new Item");
-        this.actions[position] = new ShowAllItems(position++, "Show all items");
-        this.actions[position] = this.new EditItem(position++, "Edit item");
-        this.actions[position] = this.new DeleteItem(position++, "Delete item");
-        this.actions[position] = new FindItemById(position++, "Find item by Id");
-        this.actions[position] = new FindItemsByName(position++, "Find items by name");
-        this.actions[position] = new Exit(position++, "Exit", ui);
+
+        this.actions.add(position, new AddItem(position++, "Add new Item"));
+        this.actions.add(position, new ShowAllItems(position++, "Show all items"));
+        this.actions.add(position, this.new EditItem(position++, "Edit item"));
+        this.actions.add(position, this.new DeleteItem(position++, "Delete item"));
+        this.actions.add(position, new FindItemById(position++, "Find item by Id"));
+        this.actions.add(position, new FindItemsByName(position++, "Find items by name"));
+        this.actions.add(position, new Exit(position++, "Exit", ui));
     }
-    public void addAction(UserAction action) {
-        this.actions[position++] = action;
-    }
+
     public void show() {
         for (UserAction action : actions) {
             if (action != null) {
@@ -59,7 +61,7 @@ public class MenuTracker {
         }
     }
     public void select(int key) {
-        this.actions[key].execute(this.input, this.tracker);
+        this.actions.get(key).execute(this.input, this.tracker);
     }
     class ShowAllItems extends BaseAction {
         public ShowAllItems(int key, String name) {
