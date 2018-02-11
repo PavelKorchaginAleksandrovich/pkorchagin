@@ -11,6 +11,9 @@ public class Account {
             this.value = value;
         }
     }
+    public Account(int requisites) {
+        this.requisites = requisites;
+    }
 
     public void addValue(double value) {
         this.value += value;
@@ -27,16 +30,14 @@ public class Account {
 
     @Override
     public boolean equals(Object o) {
-        boolean result = false;
         if (this == o) {
-            result = true;
+            return true;
         }
         if (o == null || getClass() != o.getClass()) {
-            result = false;
+            return false;
         }
         Account account = (Account) o;
-        result = requisites == account.requisites;
-        return result;
+        return requisites == account.requisites;
     }
 
     @Override

@@ -2,11 +2,15 @@ package ru.job4j.bank;
 
 import java.util.Objects;
 
-public class User implements Comparable<User> {
+public class User {
     private String name, passport;
 
     public User(String name, String passport) {
         this.name = name;
+        this.passport = passport;
+    }
+
+    public User(String passport) {
         this.passport = passport;
     }
 
@@ -15,24 +19,17 @@ public class User implements Comparable<User> {
         if (this == o) {
             return true;
         }
-        if (o.getClass() == String.class) {
-            return passport.equals(o);
-        }
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
         User user = (User) o;
-        return Objects.equals(passport, user.passport);
+        return this.passport.equals(user.passport);
     }
 
     @Override
     public int hashCode() {
-
         return Objects.hash(passport);
     }
 
-    @Override
-    public int compareTo(User o) {
-        return this.passport.compareTo(o.passport);
-    }
+
 }
