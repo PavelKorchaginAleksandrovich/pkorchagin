@@ -1,21 +1,11 @@
 package ru.job4j.bank;
 import java.util.*;
 public class BankMap {
-    private Map<User, Set<Account>> users = new HashMap<>();
+    private Map<User, List<Account>> users = new TreeMap<>();
 
 
     public void addUser(User user) {
-        this.users.putIfAbsent(user, new HashSet<Account>());
-    }
-
-    private Account getAccountByRequisite(Set<Account> accounts, int requisite) {
-        Account result = null;
-        Iterator<Account> it = accounts.iterator();
-        while (it.hasNext() && result == null) {
-            Account temp = it.next();
-            result = temp.equals(new Account(requisite)) ? temp : null;
-        }
-        return result;
+        this.users.putIfAbsent(user, new ArrayList<Account>());
     }
 
     public void deleteUser(User user) {
@@ -23,35 +13,41 @@ public class BankMap {
     }
 
     public void addAccountToUser(String passport, Account account) {
-        Set<Account> accounts = this.users.get(new User(passport));
+        List<Account> accounts = this.users.get(passport);
         if (accounts != null) {
-            accounts.add(account);
+            int index = accounts.indexOf(account);
+            if (index != -1) {
+                accounts.add(account);
+            }
         }
     }
 
     public void deleteAccountFromUser(String passport, Account account) {
-        Set<Account> accounts = this.users.get(new User(passport));
+        List<Account> accounts = this.users.get(passport);
         if (accounts != null) {
             accounts.remove(account);
         }
     }
 
 
-    public Set<Account> getUserAccounts(String passport) {
-        return this.users.get(new User(passport));
+    public List<Account> getUserAccounts(String passport) {
+        return this.users.;
     }
 
     public boolean transferMoney(String srcPassport, int srcRequisite, String destPassport, int dstRequisite, double amount) {
         boolean result = false;
-        Set<Account> srcAccounts = this.users.get(new User(srcPassport));
-        Set<Account> dstAccounts = this.users.get(new User(destPassport));
-        if (srcAccounts != null && dstAccounts != null) {
-            Account srcAccount = this.getAccountByRequisite(srcAccounts, srcRequisite);
-            Account dstAccount = this.getAccountByRequisite(dstAccounts, dstRequisite);
-            if (srcAccount.subValue(amount)) {
-                dstAccount.addValue(amount);
-                result = true;
-
+        List<Account> accountsFirst = this.users.get(srcPassport);
+        List<Account> accountsSecond = this.users.get(destPassport);
+        if (accountsFirst != null && accountsSecond != null) {
+            int indexFirst = accountsFirst.indexOf(srcRequisite);
+            int indexSecond = accountsSecond.indexOf(srcRequisite);
+            if (indexFirst != -1 && indexSecond != -1) {
+                Account accountFirst = accountsFirst.get(indexFirst);
+                Account accountSecond = accountsSecond.get(indexSecond);
+                if (accountFirst.subValue(amount)) {
+                    accountSecond.addValue(amount);
+                    result = true;
+                }
             }
         }
         return result;
