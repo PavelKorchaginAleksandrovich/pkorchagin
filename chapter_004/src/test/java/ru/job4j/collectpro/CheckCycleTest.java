@@ -17,7 +17,7 @@ public class CheckCycleTest {
 
         first.next = two;
         two.next = third;
-        third.next = four;
+        third.next = two;
         four.next = first;
         assertThat(new CheckCycle().hasCycle(first), is(true));
 
