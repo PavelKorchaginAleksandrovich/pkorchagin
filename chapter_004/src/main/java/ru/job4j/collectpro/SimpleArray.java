@@ -6,11 +6,16 @@ import java.util.NoSuchElementException;
 public class SimpleArray<T> implements Iterable<T> {
     private int position = 0;
     private Object[] array;
+    private int size = 0;
 
     public SimpleArray(int size) {
         this.array = new Object[size];
+        this.size = size;
     }
 
+    public int getSize() {
+        return this.size;
+    }
     public void add(T element) {
         this.array[position++] = element;
     }
