@@ -24,6 +24,13 @@ public class MyLinkedList<T> implements Iterable<T> {
         }
         return result.date;
     }
+    public T delete() {
+        Node<T> delItem = this.first;
+        this.first = this.first.next;
+        this.size--;
+        this.modcount--;
+        return delItem.date;
+    }
 
     @Override
     public Iterator<T> iterator() {
