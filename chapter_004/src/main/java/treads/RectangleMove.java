@@ -2,14 +2,11 @@ package treads;
 import javafx.scene.shape.Rectangle;
 public class RectangleMove implements Runnable{
     private final Rectangle rect;
-    private int width, height;
+    private final int width = 300, height = 300;
     private boolean increaseX = true, increaseY = true;
 
-    public RectangleMove(Rectangle rect, int width, int height) {
+    public RectangleMove(Rectangle rect) {
         this.rect = rect;
-        this.width = width;
-        this.height = height;
-
     }
     private void changeX() {
         if (increaseX) {
