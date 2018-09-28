@@ -9,7 +9,7 @@ public class DynamicSetTest {
 
     @Test
     public void whenAddContainsElementThenDoNotAdd() {
-        DynamicArraySet<String> myArray = new DynamicSet<>();
+        DynamicSet<String> myArray = new DynamicSet<>();
         myArray.add("1");
         myArray.add("2");
         myArray.add("3");

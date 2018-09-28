@@ -2,30 +2,34 @@ package ru.job4j.collectpro;
 
 import java.util.Iterator;
 
-public class DynamicSet<T> extends DynamicArraySet<T> {
+public class DynamicSet<T> implements  Iterable {
 
+    private DynamicArray<T> dynSet;
     public DynamicSet() {
-        super();
+        this.dynSet = new DynamicArray<>();
     }
-//
-    @Override
+
     public void add(T value) {
-       int pos = duplicatePosition(value);
-        if (pos == -1) {
-           super.add(value);
-        }
-    }
-
-
-
-    private int duplicatePosition(T value) {
-        int result = -1;
-        for (int i = 0; i < getPosition(); i++) {
-            if (get(i).equals(value)) {
-                result = i;
+        boolean hasDuplicate = false;
+        for (int i = 0; i < dynSet.getPosition(); i++) {
+            if (dynSet.get(i).equals(value)) {
+                hasDuplicate = true;
                 break;
             }
         }
-        return result;
+        if (!hasDuplicate) {
+            dynSet.add(value);
+        }
+    }
+    public T get(int index) {
+        return this.dynSet.get(index);
+    }
+
+    public int getsize() {
+        return this.dynSet.getsize();
+    }
+    @Override
+    public Iterator iterator() {
+        return dynSet.iterator();
     }
 }
