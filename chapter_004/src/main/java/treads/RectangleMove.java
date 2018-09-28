@@ -1,8 +1,7 @@
 package treads;
 import javafx.scene.shape.Rectangle;
-public class RectangleMove implements Runnable{
+public class RectangleMove implements Runnable {
     private final Rectangle rect;
-    private final int width = 300, height = 300;
     private boolean increaseX = true, increaseY = true;
 
     public RectangleMove(Rectangle rect) {
@@ -17,7 +16,7 @@ public class RectangleMove implements Runnable{
         checkIncreaseX();
     }
     private void checkIncreaseX() {
-        if (this.rect.getX() >= this.width) {
+        if (this.rect.getX() >= PingPong.LIMITX) {
             increaseX = false;
         } else if (this.rect.getX() <= 0) {
             increaseX = true;
@@ -32,7 +31,7 @@ public class RectangleMove implements Runnable{
         checkIncreaseY();
     }
     private void checkIncreaseY() {
-        if (this.rect.getY() >= this.height) {
+        if (this.rect.getY() >= PingPong.LIMITY) {
             increaseY = false;
         } else if (this.rect.getY() <= 0) {
             increaseY = true;
@@ -44,7 +43,7 @@ public class RectangleMove implements Runnable{
             changeX();
             changeY();
             try {
-                Thread.sleep(50);
+                Thread.sleep(10000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
