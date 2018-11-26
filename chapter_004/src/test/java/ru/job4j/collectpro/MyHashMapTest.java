@@ -76,10 +76,8 @@ public class MyHashMapTest {
         assertThat(myHashMap.insert(1, "Test1"), Is.is(true));
         assertThat(myHashMap.insert(2, "Test2"), Is.is(true));
         assertThat(myHashMap.insert(3, "Test3"), Is.is(true));
-        assertThat(myHashMap.insert(4, "Test4"), Is.is(true));
+        assertThat(myHashMap.insert(7, "Test4"), Is.is(true));
         Iterator itr = myHashMap.iterator();
-        assertThat(itr.hasNext(), Is.is(true));
-        assertThat(itr.next(), Is.is((String) null));
         assertThat(itr.hasNext(), Is.is(true));
         assertThat(itr.next(), Is.is("Test1"));
         assertThat(itr.hasNext(), Is.is(true));
@@ -88,16 +86,6 @@ public class MyHashMapTest {
         assertThat(itr.next(), Is.is("Test3"));
         assertThat(itr.hasNext(), Is.is(true));
         assertThat(itr.next(), Is.is("Test4"));
-        assertThat(itr.hasNext(), Is.is(true));
-        assertThat(itr.next(), Is.is((String) null));
-        assertThat(itr.hasNext(), Is.is(true));
-        assertThat(itr.next(), Is.is((String) null));
-        assertThat(itr.hasNext(), Is.is(true));
-        assertThat(itr.next(), Is.is((String) null));
-        assertThat(itr.hasNext(), Is.is(true));
-        assertThat(itr.next(), Is.is((String) null));
-        assertThat(itr.hasNext(), Is.is(true));
-        assertThat(itr.next(), Is.is((String) null));
         assertThat(itr.hasNext(), Is.is(false));
         itr.next();
     }

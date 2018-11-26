@@ -9,7 +9,6 @@ public class MyHashMap<K, V> implements Iterable {
     private Object[] container;
     private int size = 10;
     private int count = 0;
-
     public int getSize() {
         return this.size;
     }
@@ -91,10 +90,11 @@ public class MyHashMap<K, V> implements Iterable {
 
     private class Itr implements Iterator<V> {
         private int cursor = 0;
+        private int counter = 0;
 
         @Override
         public boolean hasNext() {
-            return cursor != size;
+            return counter < count;
         }
 
         @Override
@@ -103,7 +103,10 @@ public class MyHashMap<K, V> implements Iterable {
                 throw new NoSuchElementException();
             }
             Element elem = (Element) container[cursor++];
-            return elem != null ? elem.getValue() : null;
+            if (elem != null) {
+                counter++;
+            }
+            return elem != null ? elem.getValue() : next();
 
 
         }
