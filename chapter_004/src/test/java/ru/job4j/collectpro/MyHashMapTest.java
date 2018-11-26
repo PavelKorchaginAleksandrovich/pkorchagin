@@ -70,7 +70,7 @@ public class MyHashMapTest {
         assertThat(myHashMap.get(19), Is.is("Test19"));
     }
 
-    @Test()
+    @Test(expected = NoSuchElementException.class)
     public void iterator() {
         MyHashMap<Integer, String> myHashMap = new MyHashMap<>();
         assertThat(myHashMap.insert(1, "Test1"), Is.is(true));
@@ -99,6 +99,6 @@ public class MyHashMapTest {
         assertThat(itr.hasNext(), Is.is(true));
         assertThat(itr.next(), Is.is((String) null));
         assertThat(itr.hasNext(), Is.is(false));
-//        itr.next();
+        itr.next();
     }
 }

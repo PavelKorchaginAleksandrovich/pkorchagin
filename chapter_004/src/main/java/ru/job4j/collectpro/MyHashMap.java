@@ -20,7 +20,7 @@ public class MyHashMap<K, V> implements Iterable {
 
     boolean insert(K key, V value) {
         boolean result = false;
-        int position = key.hashCode() % size;
+        int position = Math.abs(key.hashCode()) % size;
         if (container[position] == null) {
             Element element = new Element(key, value);
             container[position] = element;
@@ -92,7 +92,6 @@ public class MyHashMap<K, V> implements Iterable {
     private class Itr implements Iterator<V> {
         private int cursor = 0;
 
-
         @Override
         public boolean hasNext() {
             return cursor != size;
@@ -100,13 +99,13 @@ public class MyHashMap<K, V> implements Iterable {
 
         @Override
         public V next() {
-            if (cursor >= container.length) {
+            if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            Element elem = (Element) container[cursor];
-            cursor += 1;
-            return elem.getValue();
+            Element elem = (Element) container[cursor++];
+            return elem != null ? elem.getValue() : null;
+
+
         }
     }
-
 }
