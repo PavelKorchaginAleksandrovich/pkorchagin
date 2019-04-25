@@ -10,4 +10,10 @@ public class Team {
     public Team(Competitor...competitors) {
         this.competitors = competitors;
     }
+
+    public void showResults() {
+        for (Competitor competitor: competitors) {
+            competitor.info();
+        }
+    }
 }

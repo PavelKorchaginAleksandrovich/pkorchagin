@@ -17,8 +17,5 @@ public class Course {
             }
         }
 
-        for (Competitor competitor : team.getCompetitors()) {
-            competitor.info();
-        }
     }
 }
