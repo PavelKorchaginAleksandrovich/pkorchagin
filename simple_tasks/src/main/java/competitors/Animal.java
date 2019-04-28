@@ -1,8 +1,8 @@
 package competitors;
 
-import competitors.Competitor;
+import competitors.*;
 
-public abstract  class Animal implements Competitor{
+public abstract  class Animal implements Competitor {
     private String type;
     private String name;
 
