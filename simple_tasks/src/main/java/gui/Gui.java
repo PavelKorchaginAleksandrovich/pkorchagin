@@ -1,11 +1,11 @@
+package gui;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
+
 public class Gui extends JFrame {
-
-
 
     JLabel myLabelFio;
     public Gui() {
@@ -16,6 +16,7 @@ public class Gui extends JFrame {
         this.add(myLabelFio, null);
         this.add(getJButton(), null);
         this.setTitle("My first swing app");
+        this.setVisible(true);
     }
 
     private javax.swing.JLabel getJLabel() {
@@ -32,6 +33,11 @@ public class Gui extends JFrame {
             jButton.addActionListener(new EnterFIOButton(myLabelFio));
         return jButton;
     }
+
+    public static void main(String[] args) {
+        new Gui();
+    }
+
 }
 
 class EnterFIOButton implements ActionListener {
@@ -72,7 +78,7 @@ class FIOFrame extends JFrame {
         private javax.swing.JTextField getJTextF() {
             JTextField jTextField = new javax.swing.JTextField();
             jTextField.setBounds(90, 50, 160, 20);
-            jTextField.setName("Фамилия");
+
         return jTextField;
     }
     private javax.swing.JTextField getJTextI() {
@@ -88,9 +94,9 @@ class FIOFrame extends JFrame {
 
     private javax.swing.JButton getJButton() {
         JButton jButton = new javax.swing.JButton();
-        jButton.setBounds(103, 110, 71, 27);
+        jButton.setBounds(75, 110, 150, 27);
         jButton.setText("Close and apply");
-        jButton.addActionListener(new ApplyFIOButton(this, f, i , o, label));
+        jButton.addActionListener(new ApplyFIOButton(this, f, i, o, label));
         return jButton;
     }
 }
