@@ -25,4 +25,5 @@ class ConfigTest {
         Throwable exception = assertThrows(UnsupportedOperationException.class, () -> config.value("нет такого ключа"));
         assertEquals(exeptionMessage, exception.getMessage());
     }
+
 }
