@@ -6,10 +6,10 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
 
-class SummMatrixTest {
+public class SummMatrixTest {
 
     @Test
-    void whenMatrixHaveWrongColumns() {
+    public void whenMatrixHaveWrongColumnsTest() {
         String exeptionMessage = "неверный размер массива";
         String[][] matrix = {{"1", "2", "3"}, {"1", "2", "3"}};
         SummMatrix summMatrix = new SummMatrix(2, matrix);
@@ -18,7 +18,7 @@ class SummMatrixTest {
     }
 
     @Test
-    void  whenMatrixHaveWrongRaws() {
+    public void  whenMatrixHaveWrongRaws() {
         String exeptionMessage = "неверный размер массива";
         String[][] matrix = {{"1", "2", "3"}, {"1", "2", "3"}};
         SummMatrix summMatrix = new SummMatrix(3, matrix);
@@ -26,7 +26,7 @@ class SummMatrixTest {
         assertEquals(exeptionMessage, exception.getMessage());
     }
     @Test
-    void whenMatrixHaveOneWrongCell() {
+    public void whenMatrixHaveOneWrongCell() {
         String exeptionMessage = "Неправильные значения в следующих ячейках: 1 2; ";
         String[][] matrix = {{"1", "2", "3"}, {"1", "2", "фуфыры"}, {"1", "2", "3"}};
         SummMatrix summMatrix = new SummMatrix(2, matrix);
@@ -34,7 +34,7 @@ class SummMatrixTest {
         assertEquals(exeptionMessage, exception.getMessage());
     }
     @Test
-    void whenMatrixHaveFewWrongCells() {
+    public void whenMatrixHaveFewWrongCells() {
         String exeptionMessage = "Неправильные значения в следующих ячейках: 1 2; 3 1; ";
         String[][] matrix = {{"1", "2", "3", "4"}, {"1", "2", "фуфыры", "4"}, {"1", "2", "3", "4"}, {"1", "фыра", "3", "4"}};
         SummMatrix summMatrix = new SummMatrix(2, matrix);
@@ -42,7 +42,7 @@ class SummMatrixTest {
         assertEquals(exeptionMessage, exception.getMessage());
     }
     @Test
-    void whenSummOfMatrixEquals30() {
+    public void whenSummOfMatrixEquals30() {
         String[][] matrix2 = {{"1", "1", "3", "2"}, {"1", "2", "1", "1"}, {"1", "2", "3", "4"}, {"1", "0", "3", "4"}};
         SummMatrix summMatrix = new SummMatrix(4, matrix2);
         assertEquals(30, summMatrix.calculate());

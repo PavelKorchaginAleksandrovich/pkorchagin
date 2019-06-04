@@ -3,7 +3,7 @@ package ru.job4j.extra;
 
 import java.util.Arrays;
 
-public class Change {
+public class  Change {
     private final static int[] CHANGE = {1, 2, 5, 10};
 
     public int[] changes(int value, int price) {

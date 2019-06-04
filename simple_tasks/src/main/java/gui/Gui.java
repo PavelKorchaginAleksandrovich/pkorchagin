@@ -3,10 +3,13 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.function.Predicate;
 
 
 public class Gui extends JFrame {
-
+    Predicate
     JLabel myLabelFio;
     public Gui() {
         super();
@@ -117,11 +120,12 @@ class ApplyFIOButton implements ActionListener {
         this.label = label;
     }
 
-    public void actionPerformed(ActionEvent e) {
+     public void actionPerformed(ActionEvent e) {
         String fioString = new StringBuilder(f.getText()).append(" ").
                append(i.getText()).append(" ").append(o.getText()).toString();
         label.setText(fioString);
         frame.dispose();
-
+        HashMap<String, String> s= new HashMap<>();
+         ArrayList<String> d = new ArrayList<>()
     }
 }

@@ -37,8 +37,8 @@ public class TaskTread {
                 showTime(timeMultiTread);
             }
         });
-        t1.run();
-        t2.run();
+        t1.start();
+        t2.start();
         try {
             t1.join();
             t2.join();
