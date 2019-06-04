@@ -1,8 +1,8 @@
 package collect;
 
-public class collectMain {
+public class CollectMain {
     public static void main(String[] args) {
-        String[] strings = {"Петя","Вася","Вася","Саша","Петя","Коля","Махмуд"};
+        String[] strings = {"Петя", "Вася", "Вася", "Саша", "Петя", "Коля", "Махмуд"};
         FirstTask firstTask = new FirstTask();
         firstTask.getUniqueWords(strings);
         firstTask.calculateMatches(strings);

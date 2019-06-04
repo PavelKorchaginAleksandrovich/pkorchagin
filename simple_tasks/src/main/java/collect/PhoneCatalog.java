@@ -12,7 +12,7 @@ public class PhoneCatalog {
         this.catalog = new HashMap<>();
     }
 
-    public void add(String surname, Long number){
+    public void add(String surname, Long number) {
        if (catalog.containsKey(surname)) {
            catalog.get(surname).add(number);
        } else {
