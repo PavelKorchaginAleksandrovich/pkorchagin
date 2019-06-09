@@ -1,4 +1,4 @@
-package inputoutput;
+package ru.job4j.inputoutput;
 
 import java.util.*;
 import java.io.*;
@@ -12,15 +12,18 @@ public class Config {
 
     public void load() {
         String line;
-        try (BufferedReader read = new BufferedReader(new FileReader(this.path))) {
+        try  {
+            BufferedReader read = new BufferedReader(new FileReader(this.path));
             while ((line = read.readLine()) != null) {
                 String[] str  = line.split("##")[0].split("=");
                 if (str.length == 2) {
                     values.put(str[0].trim(), str[1].trim());
                 }
             }
+            read.close();
         } catch (Exception e) {
             e.printStackTrace();
+
         }
 
     }
@@ -34,7 +37,9 @@ public class Config {
         throw new UnsupportedOperationException("Don't impl this method yet!");
     }
     public static void main(String[] args) {
-        Config config = new Config("app.properties");
-        config.load();
+        File file = new File("test.txt");
+        System.out.println(file.getAbsolutePath());
+//        Config config = new Config("app.properties");
+//        config.load();
     }
 }
