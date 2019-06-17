@@ -2,9 +2,7 @@ package ru.job4j.inputoutput;
 
 import org.junit.Test;
 import  org.junit.jupiter.api.*;
-
 import java.io.File;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertThat;
@@ -15,12 +13,12 @@ public class ConfigTest {
 
     @Test
     public void whenValueExist() {
-//        Config config = new Config("app.properties");
-//        config.load();
-//        assertThat(config.value("hibernate.connection.driver_class"), is("org.postgresql.Driver"));
-//        assertThat(config.value("hibernate.connection.username"), is("postgres"));
-        File file = new File("test.txt");
-        System.out.println(file.getAbsolutePath());
+        Config config = new Config("app.properties");
+        config.load();
+        assertThat(config.value("hibernate.connection.driver_class"), is("org.postgresql.Driver"));
+        assertThat(config.value("hibernate.connection.username"), is("postgres"));
+//        File file = new File("test.txt");
+//        System.out.println(file.getAbsolutePath());
     }
 
     @Test
