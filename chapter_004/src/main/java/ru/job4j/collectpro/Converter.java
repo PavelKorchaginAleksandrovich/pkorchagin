@@ -1,6 +1,6 @@
 package ru.job4j.collectpro;
 
-import java.util.Iterator;
+        import java.util.Iterator;
 
 public class Converter<T> {
     Iterator<T> inner;
@@ -11,18 +11,12 @@ public class Converter<T> {
         return new Iterator<T>() {
             @Override
             public boolean hasNext() {
-                if (inner.hasNext()) {
-                    return true;
-                }
                 move();
                 return inner.hasNext();
             }
 
             @Override
             public T next() {
-                if (inner.hasNext()) {
-                    return inner.next();
-                }
                 move();
                 return inner.next();
             }
